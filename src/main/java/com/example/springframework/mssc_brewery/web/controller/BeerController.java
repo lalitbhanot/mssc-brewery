@@ -19,7 +19,7 @@ import org.springframework.http.HttpHeaders ;
 import com.example.springframework.mssc_brewery.web.model.BeerDto;
 
 @RestController
-@RequestMapping("/api/v1/beer")
+@RequestMapping("/api/v2/beer")
 public class BeerController {
 	
 	private final  BeerService beerService ;
@@ -27,10 +27,10 @@ public class BeerController {
 	public BeerController(BeerService beerService) {
 		this.beerService = beerService ;
 	}
-	
+
 	
 	@GetMapping({"/{beerId}"})
-	public ResponseEntity<BeerDto> get(@PathVariable("beerId") UUID beerId){
+	public ResponseEntity<BeerDto> getBeerById(@PathVariable("beerId") UUID beerId){
 		return new ResponseEntity<>(beerService.getBeerById(beerId),HttpStatus.OK);
 	}
 
